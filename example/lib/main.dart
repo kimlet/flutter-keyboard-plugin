@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         events.add("OnKeyDown: $code\n$event");
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance?.addPostFrameCallback((_) {
         controller.jumpTo(controller.position.maxScrollExtent);
       });
     });
