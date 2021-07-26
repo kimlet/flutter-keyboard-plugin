@@ -19,12 +19,12 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     Keyboard.init();
-    Keyboard.onKeyDown.add((code, event) {
+    Keyboard.onKeyDown.add((code, event) async {
       if (!mounted) return;
       setState(() {
         events.add("OnKeyDown: $code\n$event");
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance?.addPostFrameCallback((_) {
         controller.jumpTo(controller.position.maxScrollExtent);
       });
     });

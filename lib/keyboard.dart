@@ -1026,7 +1026,7 @@ class KeyEvent {
       flags,
       downTime,
       eventTime;
-  final String characters;
+  final String? characters;
 
   KeyEvent.fromMsg(List msg)
       : this.deviceId = msg[0],
@@ -1069,8 +1069,8 @@ class Keyboard {
   static final List<OnKeyMultiple> onKeyMultiple = [];
   static final List<OnKeyUp> onKeyUp = [];
 
-  static void init() {
-    _channel.setMethodCallHandler((call) {
+  static void init() async {
+    _channel.setMethodCallHandler((call) async {
       var args = call.arguments;
       switch (call.method) {
         case "onKeyDown":
